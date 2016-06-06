@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet/less" type="text/css" href="../../less/modules/sample.less" />
+    <script type="text/javascript" src="../../js/libs/less.js"></script>
+    <script type="text/javascript" src="../../js/libs/require.js"></script>
+</head>
+<body>
+<section class="component" data-module="components/sample/marionette/MarionetteComponent">
+
+</section>
+<section class="component" data-module="components/sample/marionette/MarionetteComponent">
+
+</section>
+<script>
+    require.config({
+        baseUrl : '../../js/libs',
+        shim : {
+            'backbone' : {
+                deps : ['jquery'],
+                exports : 'jQuery'
+            },
+            'backbone.radio' : {
+                deps : ['backbone'],
+                exports : 'Backbone.Radio'
+            }
+        },
+        paths : {
+            apps : './../apps',
+            components : './../../components',
+            modules : './../modules',
+            utilities : './../utilities'
+
+        }
+    });
+</script>
+<script>
+    !(function(window){
+        define('window',function(){
+            return window;
+        });
+        require(['apps/sample','window'],function(app,window){
+            app({
+                el : window.document.body
+            });
+        });
+    })(window);
+
+
+</script>
+
+</body>
+</html>
